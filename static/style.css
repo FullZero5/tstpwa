@@ -5,9 +5,12 @@
   cursor: default;
   -moz-user-select: inherit;
 }
-a, a * {
+
+a,
+a * {
   cursor: pointer;
 }
+
 html {
   min-height: 100%;
   padding: 0;
@@ -64,14 +67,15 @@ body {
   background-image: linear-gradient(0deg, transparent 0%, rgba(32, 128, 32, 0.2) 2%, rgba(32, 128, 32, 0.8) 3%, rgba(32, 128, 32, 0.2) 3%, transparent 100%);
   background-repeat: no-repeat;
   -webkit-animation: scan 7.5s linear 0s infinite;
-          animation: scan 7.5s linear 0s infinite;
+  animation: scan 7.5s linear 0s infinite;
 }
 
 @-webkit-keyframes scan {
   0% {
     background-position: 0 -100vh;
   }
-  35%, 100% {
+  35%,
+  100% {
     background-position: 0 100vh;
   }
 }
@@ -80,17 +84,148 @@ body {
   0% {
     background-position: 0 -100vh;
   }
-  35%, 100% {
+  35%,
+  100% {
     background-position: 0 100vh;
   }
 }
+
 .terminal {
-  box-sizing: inherit;
-  position: absolute;
   height: 100%;
-  width: 1000px;
   max-width: 100%;
-  padding: 4rem;
   text-transform: uppercase;
 }
 
+input,
+textarea {
+  -webkit-border-radius: 0;
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+ul,
+ol {
+  padding: 0 0 0 30px;
+}
+
+#screenConsole {
+  height: 100%;
+}
+
+#screenConsole>div {
+  overflow: hidden;
+}
+
+#panelConsole {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 8px;
+  bottom: 0;
+}
+
+#panelScroll {
+  height: 100%;
+  width: 8px;
+  float: right;
+  background: #262626;
+}
+
+#controlScroll {
+  background: #009933;
+  position: absolute;
+  width: 8px;
+  height: 25px;
+  bottom: 0px;
+}
+
+#panelColors>div {
+  height: 25pt;
+}
+
+#controlShadow {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+  box-shadow: 0px 0px 20px 6px rgba(0, 0, 0, 1);
+  z-index: 1;
+}
+
+#controlBrowse {
+  padding: 4px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#controlBrowse td {
+  padding: 2px 4px;
+}
+
+#controlBrowse th {
+  padding: 2px 4px;
+  font-weight: bold;
+  color: #FFBF00;
+}
+
+#controlBrowse tr:nth-child(even) {
+  background: #101010;
+}
+
+#controlBrowse tr:nth-child(odd) {
+  background: #262626;
+}
+
+#controlInput {
+  color: #0ad40a;
+}
+
+#controlInput span {
+  animation: blinker 1s ease-out infinite;
+  margin-left: 2px;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0.0;
+  }
+}
+
+#controlKeyboard {
+  background: #000;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#controlKeyboard .key {
+  font-size: 1.4em;
+  background: #262626;
+  display: inline-block;
+  text-align: center;
+  width: 10%;
+  height: 25px;
+}
+
+.caps {
+  text-transform: uppercase;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+#controlBrowseSpacer {
+  height: 100%;
+}
