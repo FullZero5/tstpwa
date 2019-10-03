@@ -1,0 +1,23 @@
+{
+  "name": "tstpwa",
+  "version": "0.0.1",
+  "description": "PWA Pocket Guide to Git Commands",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FullZero5/tstpwa.git"
+  },
+  "keywords": [
+    "PWA"
+  ],
+  "author": "Fullzero",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FullZero5/tstpwa/issues"
+  },
+  "homepage": "https://github.com/FullZero5/tstpwa#readme"
+}
