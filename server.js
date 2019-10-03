@@ -97,4 +97,4 @@ http.createServer(async (req, res) => {
     const stream = serveFile(url);
     if (stream) stream.pipe(res);
   }
-}).listen(8080);
+}).listen(process.env.PORT||8080);
