@@ -95,7 +95,7 @@ for (const keyName in KEY_CODE) KEY_NAME[KEY_CODE[keyName]] = keyName;
 let controlKeyboard, panelScroll;
 let controlInput, controlBrowse, controlScroll;
 
-const api = buildAPI(['about']);
+const api = buildAPI(['about','gitstatus']);
 
 const pad = (padChar, length) => new Array(length + 1).join(padChar);
 
@@ -359,8 +359,8 @@ window.addEventListener('load', () => {
   initScroll();
   const path = window.location.pathname.substring(1);
   print([
-    'Metarhia/KPI is a Research & Development Center',
-    'in Kiev Polytechnic Institute (ICT faculty)',
+    'Pocket Guide to git commands',
+    'show help in commands',
   ].concat(help));
   if (path) {
     setTimeout(() => {
