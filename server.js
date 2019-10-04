@@ -6,6 +6,7 @@ const path = require('path');
 
 const STATIC_PATH = path.join(process.cwd(), './static');
 const API_PATH = './api/';
+const PORT = process.env.PORT || 8080;
 
 const MIME_TYPES = {
   html: 'text/html; charset=UTF-8',
@@ -15,6 +16,8 @@ const MIME_TYPES = {
   ico: 'image/x-icon',
   json: 'application/json',
   svg: 'image/svg+xml',
+  gif: 'image/gif',
+  txt: 'text/*',
 };
 
 const serveFile = name => {
@@ -97,4 +100,4 @@ http.createServer(async (req, res) => {
     const stream = serveFile(url);
     if (stream) stream.pipe(res);
   }
-}).listen(process.env.PORT||8080);
+}).listen(PORT);

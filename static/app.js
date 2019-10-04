@@ -79,7 +79,6 @@ const DIGIT = '0123456789';
 const CHARS = ALPHA + DIGIT;
 const TIME_LINE = 300;
 const TIME_CHAR = 20;
-
 const KEY_CODE = {
   BACKSPACE: 8, TAB: 9, ENTER: 13, PAUSE: 19, ESC: 27, SPACE: 32,
   PGUP: 33, PGDN: 34, END: 35, HOME: 36,
@@ -88,8 +87,8 @@ const KEY_CODE = {
   F7: 118, F8: 119, F9: 120, F10: 121, F11: 122, F12: 123,
   ACCENT: 192,
 };
-
 const KEY_NAME = {};
+
 for (const keyName in KEY_CODE) KEY_NAME[KEY_CODE[keyName]] = keyName;
 
 let controlKeyboard, panelScroll;
