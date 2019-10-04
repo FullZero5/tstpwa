@@ -7,6 +7,7 @@ const path = require('path');
 const STATIC_PATH = path.join(process.cwd(), './static');
 const API_PATH = './api/';
 const PORT = process.env.PORT || 8080;
+const connections = new Map();
 
 const MIME_TYPES = {
   html: 'text/html; charset=UTF-8',
