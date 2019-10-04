@@ -21,7 +21,7 @@ body {
   box-sizing: border-box;
   height: 100vh;
   background-color: #000000;
-  background-image: radial-gradient(#11581E, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-image: radial-gradient(#11581E, #041607), url("bg.gif");
   background-repeat: no-repeat;
   background-size: cover;
   font-family: 'Share Tech Mono', monospace;
@@ -36,7 +36,7 @@ body {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-image: url("bg.gif");
   background-repeat: no-repeat;
   background-size: cover;
   z-index: -1;

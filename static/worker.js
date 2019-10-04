@@ -4,6 +4,7 @@ const files = [
   '/',
   '/style.css',
   '/app.js',
+  '/bg.gif',
   '/favicon.ico',
   '/manifest.json'
 ];
