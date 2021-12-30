@@ -17,6 +17,7 @@ const MIME_TYPES = {
   json: 'application/json',
   svg: 'image/svg+xml',
   gif: 'image/gif',
+  mp3: 'audio/mpeg',
   txt: 'text/*',
 };
 

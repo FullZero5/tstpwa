@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('JavaScript has loaded');
-
 const registerServiceWorker = () => {
   if (!Reflect.has(navigator, 'serviceWorker')) {
     console.log('Service workers are not supported');
@@ -94,7 +92,7 @@ for (const keyName in KEY_CODE) KEY_NAME[KEY_CODE[keyName]] = keyName;
 let controlKeyboard, panelScroll;
 let controlInput, controlBrowse, controlScroll;
 
-const api = buildAPI(['about','gitstatus']);
+const api = buildAPI(['skills','help','about','gitstatus', 'education']);
 
 const pad = (padChar, length) => new Array(length + 1).join(padChar);
 
@@ -337,7 +335,7 @@ const commandLoop = () => {
 const commands = {};
 
 const help = [
-  '', 'Commands: about, fields, team, links, stack, contacts'
+  '', 'Доступные комманды: about, education, help, team, links, stack, contacts, download'
 ];
 
 const exec = async line => {
@@ -358,8 +356,9 @@ window.addEventListener('load', () => {
   initScroll();
   const path = window.location.pathname.substring(1);
   print([
-    'Pocket Guide to git commands',
-    'show help in commands',
+    '',
+    'Добро пожаловать',
+    'наберите команду help',
   ].concat(help));
   if (path) {
     setTimeout(() => {
