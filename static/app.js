@@ -92,7 +92,7 @@ for (const keyName in KEY_CODE) KEY_NAME[KEY_CODE[keyName]] = keyName;
 let controlKeyboard, panelScroll;
 let controlInput, controlBrowse, controlScroll;
 
-const api = buildAPI(['skills','help','about','gitstatus', 'education']);
+const api = buildAPI(['skills','help','about','experience', 'education', 'contacts', 'download']);
 
 const pad = (padChar, length) => new Array(length + 1).join(padChar);
 
@@ -335,7 +335,7 @@ const commandLoop = () => {
 const commands = {};
 
 const help = [
-  '', 'Доступные комманды: about, education, help, team, links, stack, contacts, download'
+  '', 'Доступные комманды: about, education, skills, help, links, contacts, download'
 ];
 
 const exec = async line => {
@@ -358,7 +358,7 @@ window.addEventListener('load', () => {
   print([
     '',
     'Добро пожаловать',
-    'наберите команду help',
+    'командный интерфейс активирован',
   ].concat(help));
   if (path) {
     setTimeout(() => {
