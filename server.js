@@ -77,8 +77,8 @@ const httpError = (res, status, message) => {
   res.statusCode = status;
   res.end(`"${message}"`);
 };
-
-http.createServer(async (req, res) => {
+//TODO refactor function 
+const onRequest = async (req, res) => {
   const url = req.url === '/' ? '/index.html' : req.url;
   const [first, second] = url.substring(1).split('/');
   if (first === 'api') {
@@ -96,9 +96,17 @@ http.createServer(async (req, res) => {
       httpError(res, 500, 'Server error');
     }
   } else {
-    const fileExt = path.extname(url).substring(1);
-    res.writeHead(200, { 'Content-Type': MIME_TYPES[fileExt] });
-    const stream = serveFile(url);
-    if (stream) stream.pipe(res);
+    try {
+      const fileExt = path.extname(url).substring(1);
+      res.writeHead(200, { 'Content-Type': MIME_TYPES[fileExt] });
+      const stream = serveFile(url);
+      if (stream) stream.pipe(res);
+    } catch (err) {
+      res.writeHead(404, { 'Content-Type': 'text/html; charset=UTF-8' });
+      const stream = serveFile('404.html');
+      if (stream) stream.pipe(res);
+    }
   }
-}).listen(PORT);
+};
+
+http.createServer(onRequest).listen(PORT);
