@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/FullZero5/tstpwa/issues"
   },
-  "homepage": "https://github.com/FullZero5/tstpwa#readme"
+  "homepage": "https://github.com/FullZero5/tstpwa#readme",
+  "dependencies": {
+    "@sentry/node": "^6.16.1",
+    "@sentry/tracing": "^6.16.1"
+  }
 }

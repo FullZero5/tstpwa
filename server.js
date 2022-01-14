@@ -4,6 +4,27 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
+
+Sentry.init({
+  environment: "product", // product local
+  dsn: "https://10edc1af966e4b51b954dbdb45506e04@o384159.ingest.sentry.io/6150182",
+  integrations: [
+    new Sentry.Integrations.Http({ tracing: true }),
+  ],
+  tracesSampleRate: 1.0,
+});
+
+const transaction = Sentry.startTransaction({
+  op: "resume",
+  name: "My app resume",
+});
+
+Sentry.configureScope(scope => {
+  scope.setSpan(transaction);
+});
+
 const STATIC_PATH = path.join(process.cwd(), './static');
 const API_PATH = './api/';
 const PORT = process.env.PORT || 8080;
@@ -88,12 +109,17 @@ const onRequest = async (req, res) => {
       const result = await method(...args);
       if (!result) {
         httpError(res, 500, 'Server error');
+        Sentry.captureException(result);
         return;
       }
       res.end(JSON.stringify(result));
     } catch (err) {
       console.dir({ err });
+      Sentry.captureException(err);
       httpError(res, 500, 'Server error');
+    }
+    finally {
+      transaction.finish();
     }
   } else {
     try {
@@ -104,7 +130,11 @@ const onRequest = async (req, res) => {
     } catch (err) {
       res.writeHead(404, { 'Content-Type': 'text/html; charset=UTF-8' });
       const stream = serveFile('404.html');
+      Sentry.captureMessage("Ошибка 404 запрос", url);
       if (stream) stream.pipe(res);
+    }
+    finally {
+      transaction.finish();
     }
   }
 };
